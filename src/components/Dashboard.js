@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import DailyTotal from './DailyTotal';
 import './Dashboard.css'
 import LGASearch from './LGASearch'
-import PinnedLGAList from './PinnedLGAList'
+import LGAList from './LGAList'
 
 const DATA_URL = 'https://discover.data.vic.gov.au/api/3/action/datastore_search'
 
@@ -55,7 +55,6 @@ class Dashboard extends React.Component {
         })
         .then(response => response.json())
         .then(json => {
-            console.log(json.result.records[0])
             let sum = 0
             json.result.records.map(rec => sum += Number(rec.new))
             const { records, allLgas } = processRecords(json.result.records)
@@ -76,16 +75,24 @@ class Dashboard extends React.Component {
         })
     }
 
+    topLgas() {
+        if (!this.state.records) return []
+        const lgas = Object.values(this.state.records)
+        return lgas.sort((a, b) => b.new - a.new).slice(0,5).map(obj => obj.displayName.toLowerCase())
+    }
+
     render() {
         return (
             <div className="dashboard">
                 <h1> Victoria Covid Dashboard </h1>
                 <DailyTotal newCases={this.state.totalNew} dataDate={this.state.dataDate} fetching={this.state.fetching} />
+                <LGAList title="Top LGAs" lgas={this.topLgas()} records={this.state.records}/>
+                
                 <LGASearch 
                   lgaOptions={this.state.allLgas}
                   onSelected={this.pinLGA}
                 />
-                <PinnedLGAList lgas={this.state.pinnedLgas} records={this.state.records}/>
+                <LGAList title="Pinned LGAs" lgas={this.state.pinnedLgas} records={this.state.records}/>
             </div>
 
         )
