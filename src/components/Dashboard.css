@@ -1,0 +1,12 @@
+.dashboard {
+    background-color: #999999;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    height: 80%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    margin: 10%;
+    padding: 0 10%;
+}
