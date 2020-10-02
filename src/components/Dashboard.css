@@ -1,12 +1,14 @@
 .dashboard {
-    background-color: #999999;
+    background-image: 
+        linear-gradient(to top right, #eaa6ef, #f9f871)
+    ;
     border-radius: 10px;
     box-shadow: 0 5px 5px rgba(0,0,0,0.2);
-    height: 80%;
+    min-height: 80%;
     width: 70%;
     display: flex;
     justify-content: center;
     flex-flow: column;
-    margin: 0 auto;
+    margin: 10% auto;
     padding: 0 5%;
 }

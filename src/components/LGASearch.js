@@ -29,10 +29,11 @@ class LGASearch extends React.Component {
                 </datalist>
                 <input 
                     type="text"
-                    placeholder="Search for LGA..."
+                    placeholder="Select LGA..."
                     list="lga-choice"
                     value={this.state.selected}
-                    onChange={ evt => this.setState({selected: evt.target.value.toLowerCase()})}></input>
+                    onChange={ evt => this.setState({selected: evt.target.value.toLowerCase()})}
+                />
                 <button>Add</button>
             </form>
           </div>

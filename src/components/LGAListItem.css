@@ -1,0 +1,12 @@
+.lga-list-item {
+    background-color: #c0fcf7;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    margin-bottom: 4px;
+    padding: 1em;
+}
+
+.lga-list-item:hover {
+    background-color: #c0fcf7c7;
+}

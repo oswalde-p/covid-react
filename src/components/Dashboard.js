@@ -5,6 +5,7 @@ import LGASearch from './LGASearch'
 import LGAList from './LGAList'
 
 const DATA_URL = 'https://discover.data.vic.gov.au/api/3/action/datastore_search'
+const REQUEST_BODY = '%7B%22resource_id%22%3A%22bc71e010-253a-482a-bdbc-d65d1befe526%22%2C%22q%22%3A%22%22%2C%22filters%22%3A%7B%7D%2C%22limit%22%3A100%2C%22offset%22%3A0%7D'
 
 function processRecords(records) {
     const transformed = {}
@@ -47,7 +48,7 @@ class Dashboard extends React.Component {
         this.setState({fetching: true})
         fetch(DATA_URL, {
             method: 'POST',
-            body: '%7B%22resource_id%22%3A%22bc71e010-253a-482a-bdbc-d65d1befe526%22%2C%22q%22%3A%22%22%2C%22filters%22%3A%7B%7D%2C%22limit%22%3A100%2C%22offset%22%3A0%7D',
+            body: REQUEST_BODY,
             headers: {
                 'Accept': '*/*',
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -87,12 +88,13 @@ class Dashboard extends React.Component {
                 <h1> Victoria Covid Dashboard </h1>
                 <DailyTotal newCases={this.state.totalNew} dataDate={this.state.dataDate} fetching={this.state.fetching} />
                 <LGAList title="Top LGAs" lgas={this.topLgas()} records={this.state.records}/>
+                <a href="https://knowyourcouncil.vic.gov.au/councils" target="_blank" rel="noopener noreferrer">What's an LGA?</a>
                 
+                <LGAList title="Pinned LGAs" lgas={this.state.pinnedLgas} records={this.state.records}/>
                 <LGASearch 
                   lgaOptions={this.state.allLgas}
                   onSelected={this.pinLGA}
                 />
-                <LGAList title="Pinned LGAs" lgas={this.state.pinnedLgas} records={this.state.records}/>
             </div>
 
         )

@@ -1,0 +1,21 @@
+form {
+    font-size: 20px;
+    /* padding: 0 5%; */
+    width: 100%;
+}
+
+input {
+    height: 2em;
+    width: 80%;
+}
+
+button {
+    background-color: #b171b7;
+    border: 1px solid white;
+    border-radius: 25px;
+    color: white;
+    line-height: 20px;
+    /* height: 2em; */
+    padding: 0.5em 1em;
+    /* width: 10%; */
+}
